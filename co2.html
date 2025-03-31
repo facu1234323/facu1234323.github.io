@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - Productos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            background-color: rgb(251, 255, 0);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin: 0 0 10px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0 0 15px;
+        }
+        
+        .buy-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .buy-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .cart-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+        
+        .cart-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .cart-items {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .cart-items th {
+            text-align: left;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .cart-items td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            background-color: #f2f2f2;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .remove-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .remove-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-to-products {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .back-to-products:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Página de productos -->
+    <div id="products-page">
+        <h1 style="text-align: center; color: #2c3e50;font: 1em sans-serif;" >Carpinteria el encuentro</h1>
+        
+        <div class="product-container">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <img src="imag2.jpeg" alt="Producto 1" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Zapatillas Deportivas</h3>
+                    <p class="product-price">$79.99</p>
+                    <button class="buy-button" onclick="addToCart('p1', 'Zapatillas Deportivas', 79.99, 'https://via.placeholder.com/300x200?text=Producto+1')">Comprar</button>
+                </div>
+            </div>
+            
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <img src="imag1.jpeg" alt="Producto 2" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Camiseta Premium</h3>
+                    <p class="product-price">$29.99</p>
+                    <button class="buy-button" onclick="addToCart('p2', 'Camiseta Premium', 29.99, 'https://via.placeholder.com/300x200?text=Producto+2')">Comprar</button>
+                </div>
+            </div>
+            
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <img src="imag3.jpeg" alt="Producto 3" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Reloj Inteligente</h3>
+                    <p class="product-price">$199.99</p>
+                    <button class="buy-button" onclick="addToCart('p3', 'Reloj Inteligente', 199.99, 'https://via.placeholder.com/300x200?text=Producto+3')">Comprar</button>
+                </div>
+            </div>
+            
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200?text=Producto+4" alt="Producto 4" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Auriculares Inalámbricos</h3>
+                    <p class="product-price">$129.99</p>
+                    <button class="buy-button" onclick="addToCart('p4', 'Auriculares Inalámbricos', 129.99, 'https://via.placeholder.com/300x200?text=Producto+4')">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Carrito de compras -->
+    <div id="cart-page" class="cart-container">
+        <h2 class="cart-title">Tu Carrito de Compras</h2>
+        
+        <table class="cart-items">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Los items del carrito se añadirán aquí dinámicamente -->
+            </tbody>
+        </table>
+        
+        <div class="cart-total">
+            Total: $<span id="cart-total">0.00</span>
+        </div>
+        
+        <a href="#" class="back-to-products" onclick="showProductsPage()">← Volver a los productos</a>
+    </div>
+    
+    <script>
+        let cart = [];
+        
+        // Función para añadir producto al carrito
+        function addToCart(id, name, price, image) {
+            // Verificar si el producto ya está en el carrito
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Mostrar el carrito
+            showCartPage();
+            updateCart();
+        }
+        
+        // Función para actualizar el carrito en la UI
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            
+            // Limpiar el contenedor
+            cartItemsContainer.innerHTML = '';
+            
+            let total = 0;
+            
+            // Añadir cada item al carrito
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div style="display: flex; align-items: center;">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            <span style="margin-left: 10px;">${item.name}</span>
+                        </div>
+                    </td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', parseInt(this.value))">
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                        </div>
+                    </td>
+                    <td>$${subtotal.toFixed(2)}</td>
+                    <td><button class="remove-btn" onclick="removeFromCart('${item.id}')">Eliminar</button></td>
+                `;
+                
+                cartItemsContainer.appendChild(row);
+            });
+            
+            // Actualizar el total
+            cartTotalElement.textContent = total.toFixed(2);
+        }
+        
+        // Función para actualizar la cantidad de un producto
+        function updateQuantity(id, newQuantity) {
+            if (newQuantity < 1) newQuantity = 1;
+            
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCart();
+            }
+        }
+        
+        // Función para eliminar un producto del carrito
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+            
+            // Si el carrito está vacío, volver a los productos
+            if (cart.length === 0) {
+                showProductsPage();
+            }
+        }
+        
+        // Función para mostrar la página del carrito
+        function showCartPage() {
+            document.getElementById('products-page').style.display = 'none';
+            document.getElementById('cart-page').style.display = 'block';
+        }
+        
+        // Función para mostrar la página de productos
+        function showProductsPage() {
+            document.getElementById('products-page').style.display = 'block';
+            document.getElementById('cart-page').style.display = 'none';
+        }
+        
+        // Inicializar mostrando la página de productos
+        showProductsPage();
+    </script>
+</body>
+</html>
