@@ -186,7 +186,7 @@
 <body>
     <!-- Página de productos -->
     <div id="products-page">
-        <h1 style="text-align: center; color: #2c3e50;font: 1em sans-serif;" >Carpinteria el encuentro</h1>
+        <h1 style="text-align: center; color: #2c3e50;" >hola</h1>
         
         <div class="product-container">
             <!-- Producto 1 -->
@@ -225,15 +225,15 @@
                 <div class="product-info">
                     <h3 class="product-name">Auriculares Inalámbricos</h3>
                     <p class="product-price">$129.99</p>
-                    <button class="buy-button" onclick="addToCart('p4', 'Auriculares Inalámbricos', 129.99, 'https://via.placeholder.com/300x200?text=Producto+4')">Comprar</button>
+                    <button class="buy-button" onclick="addToCart('p4', 'Auriculares Inalámbricos', 129.99)">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Carrito de compras -->
-    <div id="cart-page" class="cart-container">
-        <h2 class="cart-title">Tu Carrito de Compras</h2>
+    <div id="cart-page" class="cart-container" style="color: #2980b9;">
+        <h2 class="cart-title">hola</h2>
         
         <table class="cart-items">
             <thead>
@@ -258,10 +258,10 @@
     </div>
     
     <script>
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('tungtungsaur')) || [];
         
         // Función para añadir producto al carrito
-        function addToCart(id, name, price, image) {
+        function addToCart(id, name, price) {
             // Verificar si el producto ya está en el carrito
             const existingItem = cart.find(item => item.id === id);
             
@@ -272,11 +272,10 @@
                     id: id,
                     name: name,
                     price: price,
-                    image: image,
                     quantity: 1
                 });
             }
-            
+            localStorage.setItem('tungtungsaur',JSON.stringify(cart))
             // Mostrar el carrito
             showCartPage();
             updateCart();
@@ -301,7 +300,6 @@
                 row.innerHTML = `
                     <td>
                         <div style="display: flex; align-items: center;">
-                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                             <span style="margin-left: 10px;">${item.name}</span>
                         </div>
                     </td>
@@ -331,6 +329,7 @@
             const item = cart.find(item => item.id === id);
             if (item) {
                 item.quantity = newQuantity;
+                localStorage.setItem('tungtungsaur',JSON.stringify(cart));
                 updateCart();
             }
         }
@@ -344,6 +343,7 @@
             if (cart.length === 0) {
                 showProductsPage();
             }
+            localStorage.setItem('tungtungsaur',JSON.stringify(cart));
         }
         
         // Función para mostrar la página del carrito
