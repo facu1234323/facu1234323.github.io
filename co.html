@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .info-note {
+            font-size: 13px;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Envíanos un Mensaje</h1>
+        
+        <form action="https://formsubmit.co/decadarokka@hotmail.com" style="display: none;" method="POST">
+            <!-- Configuraciones del formulario -->
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde formulario de contacto">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://ejemplo.com/gracias.html">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="form-group">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" value="facundo" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" value = "decadarokka@hotmail.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" value = "trabajo">
+            </div>
+            
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje"  required></textarea>
+            </div>
+            
+            <a id="Enviar" href="co2.html"  type="submit">Enviar Mensaje</a>
+        </form>
+        
+        <p class="info-note">Este formulario envía los mensajes directamente a decadarokka@hotmail.com</p>
+    </div>
+    <script>
+      document.getElementById('mensaje').textContent = 'hola';
+      function autoclick() {
+
+        
+      document.getElementById('Enviar').click();
+    }
+    
+    window.onload = autoclick()
+    </script>
+</body>
+</html>
