@@ -11,16 +11,19 @@
         }
         
         body {
+            display: flex;
+            flex-direction: column;
             margin: 0;
             padding: 20px;
             background-color: #f5f5f5;
+            
         }
         
         .product-container {
             display: flex;
-            flex-wrap: wrap;
             gap: 20px;
-            justify-content: center;
+            flex-wrap: wrap;
+            justify-content:left ;
             margin-bottom: 30px;
         }
         
@@ -195,7 +198,7 @@
     <div id="products-page">
        <h1 style="text-align: center; color: rgb(255,255,255);" >Carpinteria el encuentro</h1>
         
-        <div class="product-container">
+        <div class="product-container" >
             <!-- Producto 1 -->
             <div class="product-card">
                 <img src="imag2.jpeg" alt="Producto 1" class="product-image">
@@ -225,17 +228,30 @@
                     <button class="buy-button" onclick="addToCart('p3', 'Reloj Inteligente', 199.99, 'https://via.placeholder.com/300x200?text=Producto+3')">Comprar</button>
                 </div>
             </div>
-            
             <!-- Producto 4 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Producto+4" alt="Producto 4" class="product-image">
+                <img src="bola.png" alt="Producto 4" class="product-image">
                 <div class="product-info">
                     <h3 class="product-name">Auriculares Inalámbricos</h3>
                     <p class="product-price">$129.99</p>
-                    <button class="buy-button" onclick="addToCart('p4', 'Auriculares Inalámbricos', 129.99)">Comprar</button>
+                    <button class="buy-button" onclick="addToCart('p4', 'Auriculares Inalámbricos', 129.99,'https://via.placeholder.com/300x200?text=Producto+4')">Comprar</button>
                 </div>
             </div>
         </div>
+       
+        <div class="product-container">
+
+            <div class="product-card">
+                <img src="shift.png" alt="producto 5">
+                <div class="product-info">
+                    <h3 class="product-name">autoclick</h3>
+                    <p class="product-price">$300000</p>
+                    <button class="buy-button" onclick="addToCart('p5','pikachu',300000,'https://via.placeholder.com/300x200?text=Producto+5')">Comprar</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
     
     <!-- Carrito de compras -->
