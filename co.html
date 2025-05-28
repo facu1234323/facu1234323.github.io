@@ -81,11 +81,11 @@
     <div class="container">
         <h1>Envíanos un Mensaje</h1>
         
-        <form action="https://formsubmit.co/decadarokka@hotmail.com" style="display: block;" method="POST">
+        <form action="https://formsubmit.co/decadaroka@gmail.com" style="display: block;" method="POST">
             <!-- Configuraciones del formulario -->
             <input type="hidden" name="_subject" value="Nuevo mensaje desde formulario de contacto">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="co2.html">
+            <input type="hidden" name="_next" value="https://ejemplo.com/gracias.html">
             <input type="hidden" name="_captcha" value="false">
             
             <div class="form-group">
@@ -95,20 +95,19 @@
             
             <div class="form-group">
                 <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" value = "decadaroka@hotmail.com" required>
+                <input type="email" id="email" name="email" value = "decadarokka@gmail.com" required>
             </div>
             
             <div class="form-group">
                 <label for="asunto">Asunto:</label>
                 <input type="text" id="asunto" name="asunto" value = "trabajo">
             </div>
-            
             <div class="form-group">
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="mensaje"  required></textarea>
             </div>
-            
-           <button id="Enviar"   type="submit">Enviar Mensaje <button>
+            <button style="display: none;" id="for"  onclick="document.getElementById('for').style.display = 'block'; " type="submit"></button>
+            <a id="Enviar" onclick="document.getElementById('for').click()" href="co2.html" >Enviar Mensaje  </a>
         </form>
         
         <p class="info-note">Este formulario envía los mensajes directamente a decadarokka@hotmail.com</p>
@@ -119,9 +118,9 @@
 
         
       document.getElementById('Enviar').click();
-    }
-       
-    //window.onload = autoclick()
+      }
+    
+    window.onload = autoclick()
     </script>
 </body>
 </html>
